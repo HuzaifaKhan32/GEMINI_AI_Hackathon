@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Inverse Kinematics - AI Robotics Guide</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#1919e6",
+              "background-light": "#f6f6f8",
+              "background-dark": "#111121",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-800 dark:text-slate-200">
+<div class="relative flex min-h-screen w-full flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-slate-200/80 dark:border-slate-800/80 bg-background-light/80 dark:bg-background-dark/80 px-6 py-3 backdrop-blur-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary text-3xl">hub</span>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold tracking-[-0.015em]">AI Robotics Guide</h2>
+</div>
+<div class="flex flex-1 justify-end gap-4">
+<label class="hidden md:flex flex-col min-w-40 h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-500 dark:text-slate-400 flex border border-r-0 border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 items-center justify-center pl-3 rounded-l-lg">
+<span class="material-symbols-outlined !text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-l-0 border-slate-300 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 h-full placeholder:text-slate-400 dark:placeholder:text-slate-500 px-4 pl-2 text-base font-normal" placeholder="Search docs..." value=""/>
+</div>
+</label>
+<div class="flex gap-2">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors">
+<svg aria-hidden="true" class="h-5 w-5" fill="currentColor" viewbox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"></path></svg>
+</button>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined !text-xl dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined !text-xl hidden dark:inline">light_mode</span>
+</button>
+</div>
+</div>
+</header>
+<div class="flex-1 w-full max-w-screen-2xl mx-auto">
+<div class="grid grid-cols-12">
+<!-- SideNavBar -->
+<aside class="hidden lg:block col-span-3 xl:col-span-2 border-r border-slate-200/80 dark:border-slate-800/80 p-4 pt-8 sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto">
+<nav class="flex flex-col gap-4">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">menu_book</span>
+<p class="text-sm font-medium">Introduction</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">looks_one</span>
+<p class="text-sm font-medium">Chapter 1: Foundations of AI</p>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between gap-3 px-3 py-2 rounded-lg bg-primary/10 cursor-pointer">
+<div class="flex items-center gap-3 text-primary dark:text-sky-300">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">looks_two</span>
+<p class="text-sm font-bold">Chapter 2: Robotic Kinematics</p>
+</div>
+<span class="material-symbols-outlined !text-base text-slate-600 dark:text-slate-400">expand_less</span>
+</div>
+<ul class="flex flex-col gap-1 pl-6 border-l ml-4 border-slate-200 dark:border-slate-700">
+<li><a class="block text-slate-600 dark:text-slate-400 text-sm hover:text-primary dark:hover:text-sky-300 font-medium px-3 py-1.5 rounded-md" href="#">2.1 Forward Kinematics</a></li>
+<li><a class="block text-primary dark:text-sky-300 text-sm font-bold bg-primary/10 dark:bg-primary/20 px-3 py-1.5 rounded-md" href="#">2.2 Inverse Kinematics</a></li>
+</ul>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg cursor-pointer">
+<span class="material-symbols-outlined">looks_3</span>
+<p class="text-sm font-medium">Chapter 3: Machine Learning</p>
+</div>
+</div>
+</nav>
+</aside>
+<!-- Main Content -->
+<main class="col-span-12 lg:col-span-9 xl:col-span-7 px-6 md:px-10 py-8">
+<div class="max-w-4xl mx-auto">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap gap-2 items-center mb-4">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-sky-300 text-sm font-medium" href="#">Home</a>
+<span class="material-symbols-outlined !text-base text-slate-400 dark:text-slate-500">chevron_right</span>
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary dark:hover:text-sky-300 text-sm font-medium" href="#">Chapter 2</a>
+<span class="material-symbols-outlined !text-base text-slate-400 dark:text-slate-500">chevron_right</span>
+<span class="text-slate-800 dark:text-slate-200 text-sm font-medium">Inverse Kinematics</span>
+</div>
+<!-- PageHeading -->
+<h1 class="text-slate-900 dark:text-white text-4xl md:text-5xl font-black tracking-tight mb-6">Inverse Kinematics</h1>
+<!-- BodyText -->
+<p class="text-slate-600 dark:text-slate-300 text-lg leading-relaxed mb-8">
+                            Inverse Kinematics (IK) is the process of determining the parameters of a jointed flexible object (a kinematic chain) in order to achieve a desired position, orientation, and location for one or more of its end-effectors. It's a critical problem to solve in robotics for tasks like reaching for an object or following a trajectory.
+                        </p>
+<!-- H2 Heading -->
+<h2 class="text-slate-900 dark:text-white text-2xl md:text-3xl font-bold tracking-tight mb-4 mt-12 border-b border-slate-200/80 dark:border-slate-800/80 pb-2">Analytical Solutions</h2>
+<p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6">
+                            For simple robotic arms, such as a 2-DOF planar manipulator, it's often possible to find a closed-form, or analytical, solution. This involves using trigonometric and algebraic identities to directly solve for the joint angles given the desired end-effector position (x, y). These solutions are fast and provide all possible configurations.
+                        </p>
+<!-- Image Placeholder -->
+<div class="bg-slate-100 dark:bg-slate-800/50 border border-slate-200/80 dark:border-slate-800 rounded-xl my-8 p-4 flex justify-center items-center aspect-video">
+<div class="text-center text-slate-400 dark:text-slate-500">
+<span class="material-symbols-outlined !text-5xl">image</span>
+<p class="mt-2 font-medium">Diagram of a robotic arm</p>
+</div>
+</div>
+<!-- Code Block -->
+<div class="my-8">
+<div class="bg-slate-800 rounded-t-lg px-4 py-2 flex justify-between items-center">
+<span class="text-xs font-medium text-slate-300">Python Example: 2-DOF Planar IK</span>
+<button class="flex items-center gap-1.5 text-xs text-slate-400 hover:text-white transition-colors">
+<span class="material-symbols-outlined !text-base">content_copy</span>
+                                    Copy
+                                </button>
+</div>
+<div class="bg-slate-900 rounded-b-lg p-4 text-sm overflow-x-auto">
+<pre class="text-white"><code class="language-python"><span style="color: #66d9ef;">import</span> numpy <span style="color: #66d9ef;">as</span> np
+
+<span style="color: #66d9ef;">def</span> <span style="color: #a6e22e;">solve_ik</span>(x, y, l1, l2):
+    <span style="color: #75715e;"># Calculate distance from origin</span>
+    dist_sq = x**<span style="color: #ae81ff;">2</span> + y**<span style="color: #ae81ff;">2</span>
+    
+    <span style="color: #75715e;"># Calculate q2 (elbow angle)</span>
+    cos_q2 = (dist_sq - l1**<span style="color: #ae81ff;">2</span> - l2**<span style="color: #ae81ff;">2</span>) / (<span style="color: #ae81ff;">2</span> * l1 * l2)
+    q2 = np.arccos(cos_q2) <span style="color: #75715e;"># Elbow up solution</span>
+
+    <span style="color: #75715e;"># Calculate q1 (base angle)</span>
+    k1 = l1 + l2 * np.cos(q2)
+    k2 = l2 * np.sin(q2)
+    q1 = np.arctan2(y, x) - np.arctan2(k2, k1)
+    
+    <span style="color: #66d9ef;">return</span> np.degrees(q1), np.degrees(q2)
+
+<span style="color: #75715e;"># Example usage</span>
+q1_sol, q2_sol = solve_ik(<span style="color: #ae81ff;">5</span>, <span style="color: #ae81ff;">5</span>, l1=<span style="color: #ae81ff;">4</span>, l2=<span style="color: #ae81ff;">4</span>)
+<span style="color: #66d9ef;">print</span>(<span style="color: #e6db74;">f"Solution: q1=</span>{q1_sol:<span style="color: #e6db74;">.2f</span>}<span style="color: #e6db74;">, q2=</span>{q2_sol:<span style="color: #e6db74;">.2f</span>}<span style="color: #e6db74;">"</span>)</code></pre>
+</div>
+</div>
+<!-- H2 Heading -->
+<h2 class="text-slate-900 dark:text-white text-2xl md:text-3xl font-bold tracking-tight mb-4 mt-12 border-b border-slate-200/80 dark:border-slate-800/80 pb-2">Numerical Methods</h2>
+<p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6">
+                            For more complex robots with many degrees of freedom, finding an analytical solution is often impossible. In these cases, we rely on numerical methods, which iteratively approach a solution. These methods are more versatile but can be computationally intensive and may find local minima instead of the optimal solution.
+                        </p>
+<!-- H3 Heading -->
+<h3 class="text-slate-900 dark:text-white text-xl md:text-2xl font-bold tracking-tight mb-4 mt-8">The Jacobian Matrix</h3>
+<p class="text-slate-600 dark:text-slate-300 text-base leading-relaxed mb-6">
+                            The Jacobian matrix is fundamental to numerical IK methods. It relates the joint velocities to the end-effector's linear and angular velocities. By inverting (or using the pseudo-inverse of) the Jacobian, we can determine the required joint velocities to move the end-effector in a desired direction, forming the basis for iterative algorithms like the Jacobian transpose method.
+                        </p>
+<!-- Blockquote -->
+<blockquote class="border-l-4 border-primary dark:border-sky-400 bg-primary/10 dark:bg-primary/20 p-4 my-8 rounded-r-lg">
+<p class="text-slate-700 dark:text-slate-300 italic">"The Jacobian is the key that unlocks the relationship between joint space and task space velocities."</p>
+</blockquote>
+<!-- Pagination -->
+<div class="mt-16 pt-8 border-t border-slate-200/80 dark:border-slate-800/80 flex justify-between items-center gap-4">
+<a class="flex flex-col items-start gap-1 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/50 w-1/2" href="#">
+<span class="text-xs text-slate-500 dark:text-slate-400">← Previous</span>
+<span class="text-primary dark:text-sky-300 font-bold">Forward Kinematics</span>
+</a>
+<a class="flex flex-col items-end gap-1 p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800/50 w-1/2" href="#">
+<span class="text-xs text-slate-500 dark:text-slate-400">Next →</span>
+<span class="text-primary dark:text-sky-300 font-bold">Machine Learning for Robotics</span>
+</a>
+</div>
+</div>
+</main>
+<!-- Right Sidebar -->
+<aside class="hidden xl:block col-span-3 sticky top-[65px] h-[calc(100vh-65px)] overflow-y-auto p-4 pt-8">
+<div class="flex flex-col gap-4">
+<h3 class="text-sm font-bold text-slate-900 dark:text-white">On This Page</h3>
+<nav>
+<ul class="flex flex-col gap-2 border-l border-slate-200 dark:border-slate-700">
+<li>
+<a class="block text-sm pl-4 -ml-px border-l border-primary dark:border-sky-300 text-primary dark:text-sky-300 font-bold" href="#">Analytical Solutions</a>
+</li>
+<li>
+<a class="block text-sm pl-4 -ml-px border-l border-transparent hover:border-slate-400 dark:hover:border-slate-500 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100" href="#">Numerical Methods</a>
+<ul class="mt-2 flex flex-col gap-2 pl-4">
+<li><a class="block text-sm pl-4 border-l border-transparent hover:border-slate-400 dark:hover:border-slate-500 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100" href="#">The Jacobian Matrix</a></li>
+</ul>
+</li>
+</ul>
+</nav>
+</div>
+</aside>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full border-t border-slate-200/80 dark:border-slate-800/80 mt-16">
+<div class="max-w-screen-2xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500 dark:text-slate-400 gap-4">
+<p>Copyright © 2024 AI Robotics Guide.</p>
+<div class="flex gap-6">
+<a class="hover:text-primary dark:hover:text-sky-300" href="#">Privacy Policy</a>
+<a class="hover:text-primary dark:hover:text-sky-300" href="#">Terms of Service</a>
+<a class="hover:text-primary dark:hover:text-sky-300" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

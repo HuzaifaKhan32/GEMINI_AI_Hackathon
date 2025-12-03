@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Robotics Chapter Page with Chatbot</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#3B82F6",
+              "background-light": "#f6f6f8",
+              "background-dark": "#111121",
+            },
+            fontFamily: {
+              "display": ["Space Grotesk", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-gray-800 dark:text-gray-200">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-40 w-full border-b border-gray-200/50 dark:border-white/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-sm">
+<div class="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+<div class="flex items-center gap-8">
+<a class="flex items-center gap-3" href="#">
+<div class="text-primary size-7">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_6_543)">
+<path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path>
+<path clip-rule="evenodd" d="M7.24189 26.4066C7.31369 26.4411 7.64204 26.5637 8.52504 26.3738C9.59462 26.1438 11.0343 25.5311 12.7183 24.4963C14.7583 23.2426 17.0256 21.4503 19.238 19.238C21.4503 17.0256 23.2426 14.7583 24.4963 12.7183C25.5311 11.0343 26.1438 9.59463 26.3738 8.52504C26.5637 7.64204 26.4411 7.31369 26.4066 7.24189C26.345 7.21246 26.143 7.14535 25.6664 7.1918C24.9745 7.25925 23.9954 7.5498 22.7699 8.14278C20.3369 9.32007 17.3369 11.4915 14.4142 14.4142C11.4915 17.3369 9.32007 20.3369 8.14278 22.7699C7.5498 23.9954 7.25925 24.9745 7.1918 25.6664C7.14534 26.143 7.21246 26.345 7.24189 26.4066ZM29.9001 10.7285C29.4519 12.0322 28.7617 13.4172 27.9042 14.8126C26.465 17.1544 24.4686 19.6641 22.0664 22.0664C19.6641 24.4686 17.1544 26.465 14.8126 27.9042C13.4172 28.7617 12.0322 29.4519 10.7285 29.9001L21.5754 40.747C21.6001 40.7606 21.8995 40.931 22.8729 40.7217C23.9424 40.4916 25.3821 39.879 27.0661 38.8441C29.1062 37.5904 31.3734 35.7982 33.5858 33.5858C35.7982 31.3734 37.5904 29.1062 38.8441 27.0661C39.879 25.3821 40.4916 23.9425 40.7216 22.8729C40.931 21.8995 40.7606 21.6001 40.747 21.5754L29.9001 10.7285ZM29.2403 4.41187L43.5881 18.7597C44.9757 20.1473 44.9743 22.1235 44.6322 23.7139C44.2714 25.3919 43.4158 27.2666 42.252 29.1604C40.8128 31.5022 38.8165 34.012 36.4142 36.4142C34.012 38.8165 31.5022 40.8128 29.1604 42.252C27.2666 43.4158 25.3919 44.2714 23.7139 44.6322C22.1235 44.9743 20.1473 44.9757 18.7597 43.5881L4.41187 29.2403C3.29027 28.1187 3.08209 26.5973 3.21067 25.2783C3.34099 23.9415 3.8369 22.4852 4.54214 21.0277C5.96129 18.0948 8.43335 14.7382 11.5858 11.5858C14.7382 8.43335 18.0948 5.9613 21.0277 4.54214C22.4852 3.8369 23.9415 3.34099 25.2783 3.21067C26.5973 3.08209 28.1187 3.29028 29.2403 4.41187Z" fill="currentColor" fill-rule="evenodd"></path>
+</g>
+<defs><clippath id="clip0_6_543"><rect fill="white" height="48" width="48"></rect></clippath></defs>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tighter">AI Robotics Guide</h2>
+</a>
+</div>
+<div class="flex flex-1 items-center justify-end gap-4">
+<label class="relative hidden sm:block w-full max-w-xs">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500">search</span>
+<input class="form-input h-10 w-full rounded-lg border-gray-200/50 dark:border-white/10 bg-white/50 dark:bg-black/20 pl-10 pr-4 text-sm placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-primary focus:ring-primary" placeholder="Search documentation..." value=""/>
+</label>
+<div class="flex items-center gap-2">
+<a class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10" href="#">
+<svg class="h-6 w-6" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0.5C5.37 0.5 0 5.87 0 12.5C0 18.02 3.438 22.63 8.205 24.5C8.805 24.62 9.025 24.27 9.025 23.98C9.025 23.72 9.015 22.99 9.015 22.06C5.672 22.81 4.965 20.65 4.965 20.65C4.425 19.22 3.635 18.88 3.635 18.88C2.555 18.14 3.715 18.15 3.715 18.15C4.905 18.23 5.555 19.34 5.555 19.34C6.625 21.17 8.365 20.62 9.065 20.32C9.175 19.54 9.495 19.01 9.815 18.72C7.145 18.42 4.345 17.42 4.345 12.98C4.345 11.66 4.815 10.59 5.575 9.77C5.465 9.47 5.065 8.29 5.685 6.83C5.685 6.83 6.685 6.51 9.025 8.11C9.985 7.85 11.005 7.72 12.025 7.72C13.045 7.72 14.065 7.85 15.025 8.11C17.365 6.51 18.365 6.83 18.365 6.83C18.985 8.29 18.585 9.47 18.475 9.77C19.235 10.59 19.705 11.66 19.705 12.98C19.705 17.43 16.905 18.42 14.225 18.72C14.615 19.06 14.995 19.67 14.995 20.55C14.995 21.84 14.985 22.87 14.985 23.26C14.985 23.55 15.195 23.8 15.805 23.69C20.565 21.82 24 17.24 24 12.5C24 5.87 18.63 0.5 12 0.5Z"></path></svg>
+</a>
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/10">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:inline">light_mode</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<div class="container mx-auto flex flex-1 px-4 sm:px-6 lg:px-8">
+<div class="flex w-full">
+<!-- Side Navigation Bar -->
+<aside class="sticky top-16 hidden h-[calc(100vh-4rem)] w-64 flex-shrink-0 py-8 pr-8 lg:block">
+<div class="relative h-full overflow-y-auto pb-4">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-3 px-3">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="Abstract blue and teal gradient" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBSFwEFyT4u7qZQZuU62tuKi402YveQxZMloBqpR86ajveuwuXZQVbYyjs2nRZL0cX2cYCC46dgKpy-6thyDLvNiVqiD-hCWj9J-4NJNhj20IyG9duLzZav5qKfPLlj13R5kdAlxKOhqTznBb-CYEdT3Nm_Ism1tiKBklUn4jC5JqL8H711PO6iwntIGCHHN77HJrWhXfBTxOP9PKp3veUFWaZQIOmZzjBOfn2DN_DHCU3hV2-IAJpsFwGljriq1t64zMtVO8gAHe4T");'></div>
+<div class="flex flex-col">
+<h1 class="font-medium text-gray-900 dark:text-white">AI Robotics</h1>
+<p class="text-sm text-gray-500 dark:text-gray-400">A Comprehensive Guide</p>
+</div>
+</div>
+<nav class="flex flex-col gap-1 mt-4">
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-500/10 dark:text-gray-400" href="#">1. Introduction to Robotics</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-500/10 dark:text-gray-400" href="#">2. Kinematics</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-500/10 dark:text-gray-400" href="#">3. Machine Learning for Robots</a>
+<a class="flex items-center gap-3 rounded-lg bg-primary/10 px-3 py-2 text-sm font-medium text-primary dark:bg-primary/20" href="#">4. Perception and Sensor Fusion</a>
+<a class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium text-gray-500 hover:bg-gray-500/10 dark:text-gray-400" href="#">5. Advanced Topics</a>
+</nav>
+</div>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="w-full min-w-0 max-w-4xl flex-grow py-8 lg:border-l lg:pl-8 dark:border-white/10">
+<div class="space-y-8">
+<div>
+<p class="mb-2 text-sm font-semibold text-primary">Chapter 4</p>
+<h1 class="text-4xl font-black tracking-tighter text-gray-900 dark:text-white">Perception and Sensor Fusion</h1>
+</div>
+<div class="prose prose-lg dark:prose-invert max-w-none prose-p:text-gray-600 dark:prose-p:text-gray-300 prose-headings:font-display prose-headings:tracking-tight prose-a:text-primary hover:prose-a:underline">
+<p>
+                                This chapter delves into the critical aspects of how robots perceive their environment. We will explore various sensor technologies, from cameras and LiDAR to IMUs and tactile sensors. A significant focus will be placed on sensor fusion techniques, which combine data from multiple sensors to create a more accurate and robust understanding of the world.
+                            </p>
+<div class="relative group my-8">
+<div class="absolute -inset-0.5 rounded-xl bg-gradient-to-r from-blue-500 to-teal-500 opacity-20 blur-md group-hover:opacity-30 transition-opacity"></div>
+<div class="w-full bg-center bg-no-repeat bg-cover aspect-video rounded-xl" data-alt="futuristic robotic arm assembling a circuit board" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDo4GTCDLBV1k0fuITxRI3RaRytMDZFtKT1vuBSu-4bDCOt2-B6zQyBE7WPz-5scNUe5lx9TaBA2AY0CYDmyvUeZVOZEyH2qPdSIlynknnqOoZ_tU-zJtDwtfjfsRxEdr4Zl0MjfpZrCY4zMylP0NxK2XXeFGa0vXInP8Q2jO6TPOZmiV3p8IE1943E9soX3ErZGrNgqPiUx5avZmcCmQztbmRnNMNe6Phm_-Qr_ui3cXI4wXJ9Zywgw1oBxTOqDKq6oYxFv7yqT1TE");'></div>
+</div>
+<p>
+                                By the end of this chapter, you will understand the fundamental principles of robotic perception and the algorithms used to process and interpret sensory information. This includes an exploration of Kalman filters, particle filters, and deep learning-based approaches for fusing disparate data streams into a cohesive world model.
+                            </p>
+<h2>Sensor Technologies</h2>
+<p>We begin by surveying the landscape of sensors commonly employed in modern robotics. Vision sensors, such as monocular and stereo cameras, provide rich, dense information about the environment. We will cover the basics of camera models and image processing techniques. Following this, we'll examine active sensors like LiDAR and Radar, which provide precise distance measurements and are crucial for navigation and obstacle avoidance.
+                            </p>
+<pre><code class="language-python">import numpy as np
+
+# Example of a simple sensor data fusion using weighted average
+def fuse_sensors(data1, weight1, data2, weight2):
+    """
+    Fuses data from two sensors using a simple weighted average.
+    Assumes data are scalars for simplicity.
+    """
+    fused_data = (data1 * weight1 + data2 * weight2) / (weight1 + weight2)
+    return fused_data
+
+# Simulate sensor readings
+camera_distance = 10.5  # meters
+lidar_distance = 10.2   # meters
+
+# Assume LiDAR is more reliable
+fused_result = fuse_sensors(camera_distance, 0.3, lidar_distance, 0.7)
+print(f"Fused Distance: {fused_result:.2f} meters")</code></pre>
+<p>
+                                Inertial Measurement Units (IMUs) are also critical, providing data on orientation and angular velocity. Combining these diverse sensor modalities is the core challenge of sensor fusion, a topic we will explore in depth.
+                            </p>
+</div>
+</div>
+<!-- Contextual Ask Button for selected text -->
+<div class="absolute top-0 left-0 hidden rounded-lg bg-gray-800 dark:bg-gray-100 px-3 py-1.5 text-sm font-medium text-white dark:text-gray-900 shadow-lg" id="contextual-ask-button">Ask about selection</div>
+</main>
+</div>
+</div>
+<!-- Footer -->
+<footer class="border-t border-gray-200/50 dark:border-white/10 mt-16">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-500 dark:text-gray-400">
+                © 2024 AI Robotics Guide. All rights reserved.
+            </div>
+</footer>
+<!-- Chatbot Floating Action Button -->
+<button class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-blue-500 to-teal-500 text-white shadow-lg transition-transform hover:scale-110 focus:outline-none focus:ring-4 focus:ring-primary/50">
+<span class="material-symbols-outlined text-3xl">smart_toy</span>
+</button>
+<!-- Chatbot Panel -->
+<div class="fixed bottom-24 right-6 z-50 flex h-[600px] w-[400px] flex-col overflow-hidden rounded-xl bg-background-light dark:bg-background-dark shadow-2xl border border-gray-200/50 dark:border-white/10">
+<!-- Chat Header -->
+<div class="flex items-center justify-between p-4 flex-shrink-0 bg-gradient-to-r from-blue-600 to-teal-500 text-white">
+<h3 class="text-lg font-bold">AI Book Assistant</h3>
+<button class="rounded-full p-1.5 hover:bg-white/20">
+<span class="material-symbols-outlined text-2xl">close</span>
+</button>
+</div>
+<!-- Message Area -->
+<div class="flex-1 space-y-4 overflow-y-auto p-4">
+<!-- Bot Message -->
+<div class="flex items-start gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-xl">smart_toy</span>
+</div>
+<div class="rounded-lg rounded-tl-none bg-gray-200/50 dark:bg-white/10 p-3 text-sm">
+<p>Hello! I'm the AI Book Assistant. How can I help you understand this chapter?</p>
+</div>
+</div>
+<!-- User Message -->
+<div class="flex items-start gap-3 justify-end">
+<div class="rounded-lg rounded-br-none bg-primary text-white p-3 text-sm">
+<p>What is a Kalman filter?</p>
+</div>
+</div>
+<!-- Bot Message with Typing Indicator -->
+<div class="flex items-start gap-3">
+<div class="flex h-8 w-8 items-center justify-center rounded-full bg-primary/20 text-primary flex-shrink-0">
+<span class="material-symbols-outlined text-xl">smart_toy</span>
+</div>
+<div class="rounded-lg rounded-tl-none bg-gray-200/50 dark:bg-white/10 p-3 text-sm">
+<div class="flex items-center gap-2">
+<span class="h-2 w-2 animate-[pulse_1s_cubic-bezier(0.4,0,0.6,1)_infinite] rounded-full bg-gray-400"></span>
+<span class="h-2 w-2 animate-[pulse_1s_cubic-bezier(0.4,0,0.6,1)_infinite_0.2s] rounded-full bg-gray-400"></span>
+<span class="h-2 w-2 animate-[pulse_1s_cubic-bezier(0.4,0,0.6,1)_infinite_0.4s] rounded-full bg-gray-400"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="border-t border-gray-200/50 dark:border-white/10 p-4 flex-shrink-0">
+<div class="relative">
+<input class="w-full rounded-lg border-gray-200/50 dark:border-white/10 bg-white/50 dark:bg-black/20 pr-12 text-sm placeholder:text-gray-400 dark:placeholder:text-gray-500 focus:border-primary focus:ring-primary" placeholder="Ask about the book..." type="text"/>
+<button class="absolute top-1/2 right-2 -translate-y-1/2 flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white hover:bg-primary/90">
+<span class="material-symbols-outlined text-xl">send</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
