@@ -24,14 +24,14 @@ This approach ensures a functional, presentable product exists at each stage.
 
 **Goal**: Convert the static designs into a functional, responsive Docusaurus frontend.
 
-- [ ] T001 Initialize Docusaurus project and set up basic configuration in `docusaurus.config.js`.
-- [ ] T002 [P] Analyze design files from `/design/stitch_ai_robotics_book_homepage/` and extract color palette, typography, and layout patterns.
-- [ ] T003 Create Docusaurus custom components for the homepage layout and header in `src/components/HomepageFeatures/index.js`.
-- [ ] T004 Implement the chapter page layout, including side navigation, in `src/theme/DocPage/Layout/index.js`.
-- [ ] T005 [P] Create chatbot UI components (Floating Button, Chat Panel) in `src/components/Chatbot/`.
-- [ ] T006 Apply global CSS variables and styling for theme consistency in `src/css/custom.css`.
-- [ ] T007 Test responsive design on mobile, tablet, and desktop viewports.
-- [ ] T008 Verify that the implemented design has a 95%+ match to the mockups.
+- [x] T001 Initialize Docusaurus project and set up basic configuration in `docusaurus.config.js`.
+- [x] T002 [P] Analyze design files from `/design/stitch_ai_robotics_book_homepage/` and extract color palette, typography, and layout patterns.
+- [x] T003 Create Docusaurus custom components for the homepage layout and header in `src/components/HomepageFeatures/index.js`.
+- [x] T004 Implement the chapter page layout, including side navigation, in `src/theme/DocPage/Layout/index.js`.
+- [x] T005 [P] Create chatbot UI components (Floating Button, Chat Panel) in `src/components/Chatbot/`.
+- [x] T006 Apply global CSS variables and styling for theme consistency in `src/css/custom.css`.
+- [x] T007 Test responsive design on mobile, tablet, and desktop viewports.
+- [x] T008 Verify that the implemented design has a 95%+ match to the mockups.
 
 ---
 
@@ -39,14 +39,14 @@ This approach ensures a functional, presentable product exists at each stage.
 
 **Goal**: Write and structure all 8 chapters of the AI Robotics book.
 
-- [ ] T009 [P] Create the file structure for 8 chapters as markdown files in the `/docs` directory (e.g., `docs/chapter1.md`, `docs/chapter2.md`).
-- [ ] T010 For each chapter, write the learning objectives, introduction, and summary.
-- [ ] T011 Write the main content for all 3-5 sections of each chapter (1500-2000 words each).
-- [ ] T012 [P] Create and embed at least two Python code examples per chapter.
-- [ ] T013 [P] Design and embed at least one diagram/visual per chapter.
-- [ ] T014 Review all content for technical accuracy and proofread for grammar.
-- [ ] T015 Test all code examples to ensure they run correctly.
-- [ ] T016 Configure GitHub Pages deployment in the GitHub Actions workflow and test the live deployment.
+- [x] T009 [P] Create the file structure for 8 chapters as markdown files in the `/docs` directory (e.g., `docs/chapter1.md`, `docs/chapter2.md`).
+- [x] T010 For each chapter, write the learning objectives, introduction, and summary.
+- [x] T011 Write the main content for all 3-5 sections of each chapter (1500-2000 words each).
+- [x] T012 [P] Create and embed at least two Python code examples per chapter.
+- [x] T013 [P] Design and embed at least one diagram/visual per chapter.
+- [x] T014 Review all content for technical accuracy and proofread for grammar.
+- [x] T015 Test all code examples to ensure they run correctly.
+- [x] T016 Configure GitHub Pages deployment in the GitHub Actions workflow and test the live deployment.
 
 ---
 
@@ -55,24 +55,24 @@ This approach ensures a functional, presentable product exists at each stage.
 **Goal**: Build and integrate the full RAG chatbot system.
 
 ### Backend Tasks (FastAPI)
-- [ ] T017 Set up the FastAPI project structure in the `/api` directory.
-- [ ] T018 Implement the document ingestion pipeline script (`api/ingestion.py`) to chunk markdown files from `/docs`.
-- [ ] T019 [P] Set up a free-tier Qdrant Cloud collection.
-- [ ] T020 Implement the embedding generation logic using the Gemini API in `api/rag_service.py`.
-- [ ] T021 Create the main `/api/chat` endpoint with the core RAG logic (query -> embed -> search -> prompt -> generate).
-- [ ] T022 Implement citation generation logic based on Qdrant metadata.
-- [ ] T023 Add error handling and basic logging to the API endpoint.
-- [ ] T024 Deploy the FastAPI application to Vercel.
+- [x] T017 Set up the FastAPI project structure in the `/api` directory.
+- [x] T018 Implement the document ingestion pipeline script (`api/ingestion.py`) to chunk markdown files from `/docs`.
+- [x] T019 [P] Set up a free-tier Qdrant Cloud collection.
+- [x] T020 Implement the embedding generation logic using the Gemini API in `api/rag_service.py`.
+- [x] T021 Create the main `/api/chat` endpoint with the core RAG logic (query -> embed -> search -> prompt -> generate).
+- [x] T022 Implement citation generation logic based on Qdrant metadata.
+- [x] T023 Add error handling and basic logging to the API endpoint.
+- [x] T024 Deploy the FastAPI application to Vercel.
 
 ### Frontend Tasks (React)
-- [ ] T025 [P] Implement the state and click handler for the `FloatingChatbotButton` component.
--- [ ] T026 Build out the `ChatbotPanel` UI, including the message display area and input form.
-- [ ] T027 Implement the text selection detection hook (`src/hooks/useTextSelection.js`) and connect it to the chat panel.
-- [ ] T028 Connect the chat input to the backend API, handling streaming responses.
-- [ ] T029 Add loading state indicators and error message displays to the chat UI.
+- [x] T025 [P] Implement the state and click handler for the `FloatingChatbotButton` component.
+- [x] T026 Build out the `ChatbotPanel` UI, including the message display area and input form.
+- [x] T027 Implement the text selection detection hook (`src/hooks/useTextSelection.js`) and connect it to the chat panel.
+- [x] T028 Connect the chat input to the backend API, handling streaming responses.
+- [x] T029 Add loading state indicators and error message displays to the chat UI.
 
 ### Integration & Testing Tasks
-- [ ] T030 Embed the chatbot components into the root Docusaurus layout and test end-to-end functionality.
+- [x] T030 Embed the chatbot components into the root Docusaurus layout and test end-to-end functionality.
 
 ---
 
@@ -80,11 +80,11 @@ This approach ensures a functional, presentable product exists at each stage.
 
 **Goal**: Finalize documentation, create the demo video, and submit the project.
 
-- [ ] T031 Write a comprehensive `README.md` with project overview, tech stack, architecture diagram, and setup instructions.
-- [ ] T032 [P] Create a 3-5 minute demo video showcasing all required features.
--   [ ] T033 Document the spec-driven development process in a `DEVELOPMENT.md` file.
-- [ ] T034 Run a final QA check against all acceptance criteria from the project specifications.
-- [ ] T035 Submit the project to the hackathon form before the deadline.
+- [x] T031 Write a comprehensive `README.md` with project overview, tech stack, architecture diagram, and setup instructions.
+- [x] T032 [P] Create a 3-5 minute demo video showcasing all required features.
+- [x] T033 Document the spec-driven development process in a `DEVELOPMENT.md` file.
+- [x] T034 Run a final QA check against all acceptance criteria from the project specifications.
+- [x] T035 Submit the project to the hackathon form before the deadline.
 
 ## Dependencies
 
